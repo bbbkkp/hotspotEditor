@@ -77,7 +77,7 @@ let template = [
     ]
   },
   {
-    label:'帮助',
+    label:'关于',
     submenu:[
       {
         label:'主页',
