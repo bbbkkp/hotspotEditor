@@ -1,21 +1,16 @@
-# hotspoteditor_vue
+# hotspoteditor_Electron
 
-## Project setup
+## 安装
 ```
 npm install
 ```
 
-### Compiles and hot-reloads for development
+### 启动开发环境
 ```
 npm run serve
 ```
 
-### Compiles and minifies for production
+### 运行Electron
 ```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
+elctron .
 ```
