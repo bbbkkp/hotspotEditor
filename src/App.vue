@@ -88,8 +88,6 @@ export default {
   methods:{
     showvtour(){
       this.isvtour = true;
-
-      console.log("ss")
     }
   }
 }

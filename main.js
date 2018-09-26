@@ -1,5 +1,6 @@
 
-const {app, BrowserWindow} = require('electron');
+const {app, Menu, shell, BrowserWindow} = require('electron');
+const electron = require('electron');
 const path = require('path');
 const url = require('url');
 
@@ -31,8 +32,6 @@ function createWindow () {
   })
 }
 
-app.on('ready', createWindow);
-
 // Quit when all windows are closed.
 app.on('window-all-closed', function () {
   if (process.platform !== 'darwin') {
@@ -44,6 +43,63 @@ app.on('activate', function () {
   if (mainWindow === null) {
     createWindow()
   }
+});
+
+//自定义memu
+let template = [
+  {
+    label:'文件',
+    submenu:[
+      {
+        label:'重载',
+        accelerator:'Ctrl+R',
+        click:function(item, focusedWindow){
+          if (focusedWindow) {
+            // on reload, start fresh and close any old
+            // open secondary windows
+            if (focusedWindow.id === 1) {
+              BrowserWindow.getAllWindows().forEach(function (win) {
+                if (win.id > 1) {
+                  win.close()
+                }
+              })
+            }
+            focusedWindow.reload()
+          }
+        }
+      },
+      {
+        label:'退出',
+        accelerator:'Ctrl+W',
+        role:'close'
+
+      }
+    ]
+  },
+  {
+    label:'帮助',
+    submenu:[
+      {
+        label:'主页',
+        click:function(){
+          shell.openExternal('https://cirolee.github.io/blog')
+        }
+      },
+      {
+        label:'github',
+        click:function(){
+          shell.openExternal('https://github.com/CiroLee/hotspotEditor')
+        }
+        
+      }
+    ]
+  }
+];
+
+app.on('ready', function(){
+  createWindow();
+  const menu = Menu.buildFromTemplate(template)
+  Menu.setApplicationMenu(menu)
 });
 
 
