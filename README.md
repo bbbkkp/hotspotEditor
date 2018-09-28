@@ -2,6 +2,7 @@
 
 ## 安装
 ```
+npm install electron -g
 npm install
 ```
 
