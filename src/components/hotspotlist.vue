@@ -39,7 +39,7 @@ export default {
         selectChange(value){
             let krpano = this.$store.state.krpano;
             let hotspot = krpano.get("hotspot["+value+"]");
-            krpano.call("looktohotspot("+value+",120);tween(hotspot["+value+"].ty,-30,0.2,default,tween(hotspot["+value+"].ty,0,0.2))");
+            krpano.call("tween(hotspot["+value+"].ty,-30,0.2,default,tween(hotspot["+value+"].ty,0,0.2))");
             this.$store.commit('sethotspot',hotspot);
             
         }

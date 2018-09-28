@@ -12,7 +12,9 @@ export default new Vuex.Store({
     multimodal:false,
     filepath:"",
     status:{
-      isslidebar:false
+      isslidebar:false,
+      refresh:0,
+      location:false
     }
 
   },
@@ -25,6 +27,9 @@ export default new Vuex.Store({
     },
     sethotspot(state,hotspot){
       state.hotspot = hotspot;
+    },
+    togglerefresh(state,date){
+      state.status.refresh = date;
     }
   },
   actions: {

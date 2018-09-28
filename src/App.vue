@@ -2,7 +2,10 @@
   <div id="app">
     <!--选择文件提示页-->
     <chooseFile v-if="!isvtour" v-on:showvtour="showvtour" />
+    <!--热点位置显示-->
+    <spotLocation v-if="$store.state.status.location" />
     <!--侧栏按钮组-->
+    <set-button class="refresh-btn" :obj="refreshset" />
     <set-button class="setting-switch" :obj="singleset" />
     <slideBar v-if="$store.state.status.isslidebar">
       <set-button v-for="item in setbuttons" :key="item.id" :obj="item" />
@@ -27,12 +30,20 @@ import setButton from './components/setButton';
 import slideBar from './components/slideBar';
 import hotspotList from './components/hotspotlist';
 import setModal from './components/settingModal';
-import multisetModal from './components/multisettingModal'
+import multisetModal from './components/multisettingModal';
+import spotLocation from './components/hotspotLocation';
 export default {
   name: 'app',
   data(){
     return {
       isvtour:false,
+      refreshset:{
+        settype:"refresh",
+        type:"ios-refresh",
+        bgcolor:"transparent",
+        color:"#fff",
+        size:38
+      },
       singleset:{
         settype:'setting',
         type:'ios-settings',
@@ -41,6 +52,11 @@ export default {
         size:30
       },
       setbuttons:[
+        {
+          settype:'move',
+          type:'md-hand',
+          bgcolor:'#EC0E5B'
+        },
         {
           settype:'scale',
           type:'md-resize',
@@ -83,7 +99,8 @@ export default {
     slideBar,
     hotspotList,
     setModal,
-    multisetModal
+    multisetModal,
+    spotLocation
   },
   methods:{
     showvtour(){
@@ -107,9 +124,14 @@ body{
 	z-index:11;
 }
 .setting-switch{
-  position:absolute;
+  position:fixed;
   top:10px;
   right:10px;
+}
+.refresh-btn{
+  position:fixed;
+  top:11px;
+  right:50px;
 }
 
 </style>

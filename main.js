@@ -17,7 +17,7 @@ function createWindow () {
 
   //加载应用----打包
   // mainWindow.loadURL(url.format({
-  //   pathname: path.join(__dirname, './dist/index.html'),
+  //   pathname: path.join(__dirname, 'index.html'),
   //   protocol: 'file:',
   //   slashes: true
   // }))
@@ -77,7 +77,7 @@ let template = [
     ]
   },
   {
-    label:'关于',
+    label:'帮助',
     submenu:[
       {
         label:'主页',
@@ -91,6 +91,14 @@ let template = [
           shell.openExternal('https://github.com/CiroLee/hotspotEditor')
         }
         
+      },
+      {
+        label:'开发者工具',
+        click:function(item,focusedWindow){
+          if(focusedWindow){
+            focusedWindow.toggleDevTools()
+          }      
+        }
       }
     ]
   }

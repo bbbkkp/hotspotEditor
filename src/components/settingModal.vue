@@ -42,11 +42,13 @@ export default {
             switch(settype){
                 case 'scale':
                     this.min = 0;
-                    this.max = 10;    
+                    this.max = 10; 
+                    this.step = 0.01;   
                 break;
                 case 'alpha':
                     this.min = 0;
                     this.max = 1;
+                    this.step = 0.1;
                 break;
                 case 'depth':
                     this.min = 0;
@@ -56,7 +58,7 @@ export default {
                 case 'rotate':
                     this.min = -360;
                     this.max = 360;
-                    console.log(krpano.get(hsattr))
+                    this.step = 0.01;
                 break;
             };
             
@@ -69,7 +71,7 @@ export default {
         //确定事件
         okEvent(){
             let name = this.$store.state.settype;
-            let attr = `${name}=${this.value}`;
+            let attr = `${name}="${this.value}"`;
 
             clipboard.writeText(attr);
             this.$Message.success(`已复制 ${attr} 属性`);

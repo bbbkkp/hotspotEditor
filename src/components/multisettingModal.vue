@@ -60,9 +60,9 @@ export default {
                     ];
                 break;
                 case '3drotate':
-                    let rx = `hotspot[${hsname}].ox`;
-                    let ry = `hotspot[${hsname}].oy`;
-                    let rz = `hotspot[${hsname}].oz`;
+                    let rx = `hotspot[${hsname}].rx`;
+                    let ry = `hotspot[${hsname}].ry`;
+                    let rz = `hotspot[${hsname}].rz`;
 
                     this.values = [
                         {
@@ -94,7 +94,7 @@ export default {
         okEvent(){
             let str = '';
             this.values.map(element=>{
-                str += `${element.subtitle}=${element.value} `;
+                str += `${element.subtitle}="${element.value}" `;
                 
             });
 

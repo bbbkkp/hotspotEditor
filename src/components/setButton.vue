@@ -29,9 +29,26 @@ export default {
     methods:{
         setClickEvent(e){
             let settype = e.currentTarget.dataset.settype;
-            if(settype !=='setting' && !this.$store.state.hotspot){
+            //刷新
+            if(settype =='refresh'){
+                let date = new Date().getTime();
+                this.$store.commit('togglerefresh',date);
+                
+                return;
+            }
+            else if(settype !=='setting' && !this.$store.state.hotspot){
                 this.$Message.warning('请选择热点！');
                 return;
+            }
+            else if(settype ==='move'){
+                let settype = this.$store.state.settype;
+                let krpano = this.$store.state.krpano;
+                let hsname = this.$store.state.hotspot.name;
+
+                this.$store.state.status.location = true;
+
+                krpano.call("looktohotspot("+hsname+",120);tween(hotspot["+hsname+"].ty,-30,0.2,default,tween(hotspot["+hsname+"].ty,0,0.2))");
+                krpano.set("hotspot["+hsname+"].ondown","draghotspot()");
             }
             else if(settype == 'setting'){
                 this.$store.state.status.isslidebar = !this.$store.state.status.isslidebar;
@@ -49,7 +66,7 @@ export default {
     }
 }
 </script>
-<style>
+<style scoped>
 .setting-btn{
   width:40px;
   height:40px;
