@@ -24,7 +24,7 @@ elctron .
 
 #### 2018-10-10      
 
-　**<span style="color:red" >新增</span>**添加自定义热点功能。可自定义样式和自定义动作(onclick)代码。
+　<span style="color:red" >新增</span>添加自定义热点功能。可自定义样式和自定义动作(onclick)代码。
 
 ## 说明      
 
