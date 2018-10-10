@@ -44,6 +44,7 @@
 				this.code = "";
 				if(arr < 0){
 					krpano.call("removehotspot("+name+")");
+					this.$store.commit('sethotspot','');
 				};
 				
 			},
