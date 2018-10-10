@@ -36,10 +36,17 @@ export default {
                 
                 return;
             }
+            //添加热点
+            else if(settype =='add'){
+                this.$store.state.status.addhotspot = true;
+                console.log('add')
+            }
+            //编辑已有热点时，未选择热点提示
             else if(settype !=='setting' && !this.$store.state.hotspot){
                 this.$Message.warning('请选择热点！');
                 return;
             }
+            //移动热点
             else if(settype ==='move'){
                 let settype = this.$store.state.settype;
                 let krpano = this.$store.state.krpano;
@@ -50,6 +57,7 @@ export default {
                 krpano.call("looktohotspot("+hsname+",120);tween(hotspot["+hsname+"].ty,-30,0.2,default,tween(hotspot["+hsname+"].ty,0,0.2))");
                 krpano.set("hotspot["+hsname+"].ondown","draghotspot()");
             }
+            //不同功能判断
             else if(settype == 'setting'){
                 this.$store.state.status.isslidebar = !this.$store.state.status.isslidebar;
             }

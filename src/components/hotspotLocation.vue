@@ -1,7 +1,7 @@
 <template>
     <div class="spotlocation-container">
         <div>
-            <Button icon="md-checkmark" type="primary" class="spot-end" @click="spotFinishEvent" >确定</Button>
+            <Button icon="md-checkmark" type="success" class="spot-end" @click="spotFinishEvent" >确定</Button>
             <Button icon="md-close" type="warning" class="spot-end" @click="spotCancelEvent" >取消</Button>
         </div>
     </div>

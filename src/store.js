@@ -14,7 +14,10 @@ export default new Vuex.Store({
     status:{
       isslidebar:false,
       refresh:0,
-      location:false
+      location:false,
+      addhotspot:false,
+      eventbus:false,
+      spoteventmodal:false
     }
 
   },

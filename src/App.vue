@@ -4,6 +4,8 @@
     <chooseFile v-if="!isvtour" v-on:showvtour="showvtour" />
     <!--热点位置显示-->
     <spotLocation v-if="$store.state.status.location" />
+    <!--热点中间事件-->
+    <hotspotEventBus v-if="$store.state.status.eventbus" />
     <!--侧栏按钮组-->
     <set-button class="refresh-btn" :obj="refreshset" />
     <set-button class="setting-switch" :obj="singleset" />
@@ -17,6 +19,8 @@
     <!--模态窗口-->
     <setModal />
     <multisetModal />
+    <addHotspot />
+    <spotEventModal />
   </div>
 </template>
 <script>
@@ -32,6 +36,10 @@ import hotspotList from './components/hotspotlist';
 import setModal from './components/settingModal';
 import multisetModal from './components/multisettingModal';
 import spotLocation from './components/hotspotLocation';
+import addHotspot from './components/addhotspotModal';
+import hotspotEventBus from './components/addhotspotEvent';
+import spotEventModal from './components/spotEventModal';
+
 export default {
   name: 'app',
   data(){
@@ -52,6 +60,11 @@ export default {
         size:30
       },
       setbuttons:[
+        {
+          settype:'add',
+          type:'md-add',
+          bgcolor:'#40D26B'
+        },
         {
           settype:'move',
           type:'md-hand',
@@ -100,7 +113,10 @@ export default {
     hotspotList,
     setModal,
     multisetModal,
-    spotLocation
+    spotLocation,
+    addHotspot,
+    hotspotEventBus,
+    spotEventModal
   },
   methods:{
     showvtour(){
