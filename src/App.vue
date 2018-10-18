@@ -21,6 +21,7 @@
     <multisetModal />
     <addHotspot />
     <spotEventModal />
+    <spotAttributeModal />
   </div>
 </template>
 <script>
@@ -39,6 +40,7 @@ import spotLocation from './components/hotspotLocation';
 import addHotspot from './components/addhotspotModal';
 import hotspotEventBus from './components/addhotspotEvent';
 import spotEventModal from './components/spotEventModal';
+import spotAttributeModal from './components/spotAttributeModal';
 
 export default {
   name: 'app',
@@ -116,7 +118,8 @@ export default {
     spotLocation,
     addHotspot,
     hotspotEventBus,
-    spotEventModal
+    spotEventModal,
+    spotAttributeModal
   },
   methods:{
     showvtour(){

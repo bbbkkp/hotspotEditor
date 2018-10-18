@@ -33,6 +33,8 @@ export default {
                 style = this.style,
                 h = krpano.get("view.hlookat"),
                 v = krpano.get("view.vlookat");
+            
+            this.$store.state.style = this.style;
 
             krpano.call("addhotspot("+name+")");
             krpano.call("hotspot["+name+"].loadstyle("+style+")");
@@ -70,9 +72,6 @@ export default {
 }
 </script>
 <style scoped>
-.input-container{
-    
-}
 .input-item{
     padding:6px 0;
 }
