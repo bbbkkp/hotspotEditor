@@ -1,5 +1,5 @@
 <template>
-	<Modal v-model="$store.state.status.spoteventmodal" draggable title="热点onclick" @on-ok="okEvent" @on-cancel="cancelEvent">
+	<Modal v-model="$store.state.status.spoteventmodal" draggable title="热点事件" @on-ok="okEvent" @on-cancel="cancelEvent">
 		<RadioGroup v-model="event">
 			<Radio label="onclick"></Radio>
 			<Radio label="onhover"></Radio>
