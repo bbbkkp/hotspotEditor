@@ -1,5 +1,5 @@
 <template>
-    <Modal v-model="$store.state.modal" draggable :title="title" @on-ok="okEvent" @on-cancel="cancelEvent">
+    <Modal v-model="$store.state.status.modal" draggable :title="title" @on-ok="okEvent" @on-cancel="cancelEvent">
         <Slider  v-model="value" :min="min" :max="max" :step="step" show-input @on-input="changeAttribute"></Slider>
     </Modal>
 </template>

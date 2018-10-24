@@ -29,8 +29,20 @@ export default {
     methods:{
         setClickEvent(e){
             let settype = e.currentTarget.dataset.settype;
+            //设备模拟
+            if(settype == 'device'){
+                this.$store.state.status.ismobile = !this.$store.state.status.ismobile;
+                return;
+            }
+            //视野调整
+            if(settype == 'view'){
+                let krpano = this.$store.state.krpano;
+                krpano.set("layer[view_change_container].visible",true);
+                this.$store.state.status.viewbtns = true;
+                return;
+            }
             //刷新
-            if(settype =='refresh'){
+            else if(settype =='refresh'){
                 let date = new Date().getTime();
                 this.$store.commit('togglerefresh',date);
                 
@@ -62,11 +74,11 @@ export default {
                 this.$store.state.status.isslidebar = !this.$store.state.status.isslidebar;
             }
             else if(settype !=='setting' && this.$store.state.hotspot && !this.obj.multi){
-                this.$store.state.modal = true;
+                this.$store.state.status.modal = true;
                 this.$store.state.settype = settype;
             }
             else if(settype !=='setting' && this.$store.state.hotspot && this.obj.multi){
-                this.$store.state.multimodal = true;
+                this.$store.state.status.multimodal = true;
                 this.$store.state.settype = settype;
             }
             

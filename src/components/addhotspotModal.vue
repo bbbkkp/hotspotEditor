@@ -1,5 +1,5 @@
 <template>
-    <Modal v-model="$store.state.status.addhotspot" :mask="false" title="添加热点" @on-ok="okEvent" @on-cancel="cancelEvent">
+    <Modal v-model="$store.state.status.addhotspot" :mask="false" draggable title="添加热点" @on-ok="okEvent" @on-cancel="cancelEvent">
         <div class="input-container">
             <Input class="input-item" v-model="name" placeholder="热点名称" @on-blur="filerSpotname(name)" />
             <Input class="input-item" v-model="style" placeholder="热点样式" />

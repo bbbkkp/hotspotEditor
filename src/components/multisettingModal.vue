@@ -1,5 +1,5 @@
 <template>
-    <Modal v-model="$store.state.multimodal" draggable :title="title" @on-ok="okEvent" @on-cancel="cancelEvent">
+    <Modal v-model="$store.state.status.multimodal" draggable :title="title" @on-ok="okEvent" @on-cancel="cancelEvent">
         <div class="slider" v-for="(item,index) in values" :key="index">
             <span>{{item.subtitle}}</span>
             <Slider :min="item.min" :max="item.max" :step="step" v-model="item.value" @on-input="changeAttribute($event,index)"></Slider>

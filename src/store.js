@@ -8,20 +8,23 @@ export default new Vuex.Store({
     krpano:null,
     hotspot:null,
     settype:'',
-    modal:false,
-    multimodal:false,
     style:null,
     filepath:"",
     attributes:null,
     spotevent:null,
+    view:null,
     status:{
       isslidebar:false,
       refresh:0,
       location:false,
       addhotspot:false,
       eventbus:false,
+      modal:false,
+      multimodal:false,
       spoteventmodal:false,
-      spotattributemodal:false
+      spotattributemodal:false,
+      viewbtns:false,
+      ismobile:false
     }
 
   },
@@ -37,6 +40,7 @@ export default new Vuex.Store({
     },
     togglerefresh(state,date){
       state.status.refresh = date;
+
     },
     setattributes(state,attributes){
       state.attributes = attributes;

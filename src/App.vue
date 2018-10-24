@@ -6,7 +6,10 @@
     <spotLocation v-if="$store.state.status.location" />
     <!--热点中间事件-->
     <hotspotEventBus v-if="$store.state.status.eventbus" />
+    <viewChange v-if="$store.state.status.viewbtns" />
     <!--侧栏按钮组-->
+    <set-button class="device-btn" :obj="device" />
+    <set-button class="view-btn" :obj="viewset" />
     <set-button class="refresh-btn" :obj="refreshset" />
     <set-button class="setting-switch" :obj="singleset" />
     <slideBar v-if="$store.state.status.isslidebar">
@@ -41,24 +44,38 @@ import addHotspot from './components/addhotspotModal';
 import hotspotEventBus from './components/addhotspotEvent';
 import spotEventModal from './components/spotEventModal';
 import spotAttributeModal from './components/spotAttributeModal';
+import viewChange from './components/viewchange';
 
 export default {
   name: 'app',
   data(){
     return {
       isvtour:false,
+      device:{
+        settype:'device',
+        type:'md-phone-portrait',
+        color:'#ed4014',
+        size:26
+      },
+      viewset:{
+        settype:'view',
+        type:'md-eye',
+        bgcolor:'transparent',
+        color:'#ed4014',
+        size:30
+      },
       refreshset:{
         settype:"refresh",
         type:"ios-refresh",
         bgcolor:"transparent",
-        color:"#fff",
+        color:"#ed4014",
         size:38
       },
       singleset:{
         settype:'setting',
         type:'ios-settings',
         bgcolor:'transparent',
-        color:'#fff',
+        color:'#ed4014',
         size:30
       },
       setbuttons:[
@@ -119,7 +136,8 @@ export default {
     addHotspot,
     hotspotEventBus,
     spotEventModal,
-    spotAttributeModal
+    spotAttributeModal,
+    viewChange
   },
   methods:{
     showvtour(){
@@ -137,6 +155,7 @@ export default {
 }
 body{
 	margin:0;
+  background-color: #f9f9f9 !important;
 	overflow: hidden;
 }
 .hzindex{
@@ -151,6 +170,16 @@ body{
   position:fixed;
   top:11px;
   right:50px;
+}
+.view-btn{
+  position:fixed;
+  top:11px;
+  right:90px;
+}
+.device-btn{
+  position:fixed;
+  top:11px;
+  right:130px;
 }
 
 </style>
