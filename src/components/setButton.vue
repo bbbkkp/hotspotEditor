@@ -29,32 +29,20 @@ export default {
     methods:{
         setClickEvent(e){
             let settype = e.currentTarget.dataset.settype;
-            //设备模拟
-            if(settype == 'device'){
-                this.$store.state.status.ismobile = !this.$store.state.status.ismobile;
-                return;
-            }
-            //视野调整
-            if(settype == 'view'){
-                let krpano = this.$store.state.krpano;
-                krpano.set("layer[view_change_container].visible",true);
-                this.$store.state.status.viewbtns = true;
-                return;
-            }
-            //刷新
-            else if(settype =='refresh'){
-                let date = new Date().getTime();
-                this.$store.commit('togglerefresh',date);
-                
-                return;
-            }
+
             //添加热点
-            else if(settype =='add'){
+            if(settype =='add'){
                 this.$store.state.status.addhotspot = true;
-                console.log('add')
+                let krpano = this.$store.state.krpano;
+                //列出可用热点样式style
+                let style_count = krpano.get("style.count");
+                this.$store.state.stylelist = [];
+                for(let i = 0;i < style_count; i++){
+                   this.$store.state.stylelist.push(krpano.get("style["+i+"].name"));
+                }
             }
             //编辑已有热点时，未选择热点提示
-            else if(settype !=='setting' && !this.$store.state.hotspot){
+            else if(!this.$store.state.hotspot){
                 this.$Message.warning('请选择热点！');
                 return;
             }
@@ -69,15 +57,13 @@ export default {
                 krpano.call("looktohotspot("+hsname+",120);tween(hotspot["+hsname+"].ty,-30,0.2,default,tween(hotspot["+hsname+"].ty,0,0.2))");
                 krpano.set("hotspot["+hsname+"].ondown","draghotspot()");
             }
-            //不同功能判断
-            else if(settype == 'setting'){
-                this.$store.state.status.isslidebar = !this.$store.state.status.isslidebar;
-            }
-            else if(settype !=='setting' && this.$store.state.hotspot && !this.obj.multi){
+            //单一条件模态窗
+            else if(!this.obj.multi){
                 this.$store.state.status.modal = true;
                 this.$store.state.settype = settype;
             }
-            else if(settype !=='setting' && this.$store.state.hotspot && this.obj.multi){
+            //多条件模态窗
+            else if(this.obj.multi){
                 this.$store.state.status.multimodal = true;
                 this.$store.state.settype = settype;
             }

@@ -55,7 +55,7 @@ export default {
 }
 .title{
     padding:4px 2px;
-    color:#515a6e;
+    color:#343434;
 }
 </style>
 

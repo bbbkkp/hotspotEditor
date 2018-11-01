@@ -13,6 +13,7 @@ export default new Vuex.Store({
     attributes:null,
     spotevent:null,
     view:null,
+    stylelist:[],
     status:{
       isslidebar:false,
       refresh:0,

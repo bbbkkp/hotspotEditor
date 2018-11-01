@@ -8,10 +8,10 @@
     <hotspotEventBus v-if="$store.state.status.eventbus" />
     <viewChange v-if="$store.state.status.viewbtns" />
     <!--侧栏按钮组-->
-    <set-button class="device-btn" :obj="device" />
-    <set-button class="view-btn" :obj="viewset" />
-    <set-button class="refresh-btn" :obj="refreshset" />
-    <set-button class="setting-switch" :obj="singleset" />
+    <menu-button class="device-btn" :obj="device" />
+    <menu-button class="view-btn" :obj="viewset" />
+    <menu-button class="refresh-btn" :obj="refreshset" />
+    <menu-button class="setting-switch" :obj="singleset" />
     <slideBar v-if="$store.state.status.isslidebar">
       <set-button v-for="item in setbuttons" :key="item.id" :obj="item" />
     </slideBar>
@@ -35,6 +35,7 @@ Vue.prototype.$Message = Message;
 import chooseFile from './view/chooseFIle';
 import vtour from './components/Vtour';
 import setButton from './components/setButton';
+import menuButton from './components/menuButton';
 import slideBar from './components/slideBar';
 import hotspotList from './components/hotspotlist';
 import setModal from './components/settingModal';
@@ -128,6 +129,7 @@ export default {
     chooseFile,
     vtour,
     setButton,
+    menuButton,
     slideBar,
     hotspotList,
     setModal,

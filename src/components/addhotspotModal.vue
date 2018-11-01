@@ -2,39 +2,44 @@
     <Modal v-model="$store.state.status.addhotspot" :mask="false" draggable title="添加热点" @on-ok="okEvent" @on-cancel="cancelEvent">
         <div class="input-container">
             <Input class="input-item" v-model="name" placeholder="热点名称" @on-blur="filerSpotname(name)" />
-            <Input class="input-item" v-model="style" placeholder="热点样式" />
+            <!-- <Input class="input-item" v-model="style" placeholder="热点样式" /> -->
+            <Select v-model="style" filterable multiple placeholder="请选择热点样式">
+                <Option v-for="item in $store.state.stylelist" :value="item" :key="item">{{item}}</Option>
+            </Select>
         </div>
     </Modal>
 </template>
 <script>
-import {Modal,Input} from 'iview'
+import {Modal,Input,Option,Select} from 'iview'
 export default {
     name:'addhotspotmodal',
     data(){
         return {
             value:true,
             name:'',
-            style:''
+            style:[]
         }
     },
     components:{
         Modal,
-        Input
+        Input,
+        Select,
+        Option
     },
     methods:{
         okEvent(){
             let krpano = this.$store.state.krpano;
-            if(!isNaN(this.name) || !isNaN(this.style) || this.name == "" || this.style == ""){
+            if(!isNaN(this.name) || this.name == "" || !this.style.length){
                 this.$Message.warning('请输入正确的热点名称或样式名称！');
                 
                 return;
             }
             let name = this.name,
-                style = this.style,
+                style = this.style.join('|'),
                 h = krpano.get("view.hlookat"),
                 v = krpano.get("view.vlookat");
-            
-            this.$store.state.style = this.style;
+
+            this.$store.state.style = style;
 
             krpano.call("addhotspot("+name+")");
             krpano.call("hotspot["+name+"].loadstyle("+style+")");

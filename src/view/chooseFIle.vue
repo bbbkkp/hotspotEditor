@@ -1,7 +1,7 @@
 <template>
     <div class="choose-file">
         <Button type="primary" size="large" @click="chooseFile">选择文件</Button>
-        <div class="tip-text">请选择全景文件夹的位置</div>
+        <div class="tip-text">请选择全景文件夹的路径</div>
     </div>
 </template>
 <script>

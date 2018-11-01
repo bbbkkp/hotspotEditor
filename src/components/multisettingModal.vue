@@ -14,7 +14,6 @@ export default {
     name:'multisetmodal',
     data(){
         return {
-            edge:"",
             title:'',
             values:[],
             prevalues:null,

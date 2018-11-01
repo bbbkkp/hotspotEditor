@@ -30,7 +30,7 @@
 						ath:hotspot.ath.toFixed(3),
 						atv:hotspot.atv.toFixed(3)
 					};
-
+					
 					let str = `<hotspot name="${spotobj.name}" style="${spotobj.style}" ath="${spotobj.ath}" atv="${spotobj.atv}" />`;
 					if(this.$store.state.attributes){
 						str = str.split('/>')[0] + this.$store.state.attributes;
