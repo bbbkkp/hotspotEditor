@@ -42,7 +42,6 @@
 					clipboard.writeText(str);
 					this.$Message.success('热点属性已复制');
 
-					console.log(str)
 					this.cancelEvent();
 			},
 			cancelEvent(arr){

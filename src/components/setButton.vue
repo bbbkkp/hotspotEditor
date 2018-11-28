@@ -57,6 +57,12 @@ export default {
                 krpano.call("looktohotspot("+hsname+",120);tween(hotspot["+hsname+"].ty,-30,0.2,default,tween(hotspot["+hsname+"].ty,0,0.2))");
                 krpano.set("hotspot["+hsname+"].ondown","draghotspot()");
             }
+            //属性设置
+            else if(settype == 'attributes'){
+                this.$store.state.status.spotattributemodal = true;
+                this.$store.state.settype = settype;
+                return;
+            }
             //单一条件模态窗
             else if(!this.obj.multi){
                 this.$store.state.status.modal = true;
@@ -67,7 +73,7 @@ export default {
                 this.$store.state.status.multimodal = true;
                 this.$store.state.settype = settype;
             }
-            
+                        
         }
     }
 }

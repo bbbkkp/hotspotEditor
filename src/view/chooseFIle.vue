@@ -8,7 +8,7 @@
 import { Button } from 'iview';
 
 const {dialog} = window.require('electron').remote;
-
+const {webContents} = window.require('electron').remote;
 export default {
     name:'choosefile',
     components:{
@@ -32,7 +32,7 @@ export default {
     }
 }
 </script>
-<style>
+<style scoped>
 .choose-file{
 	width:100%;
 	height: 100%;

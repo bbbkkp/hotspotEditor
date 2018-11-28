@@ -24,6 +24,11 @@
 				event:'onclick'
 			}
 		},
+		computed:{
+			highlightCode(){
+				return this.code;
+			}
+		},
 		components:{
 			Modal,
 			Input,

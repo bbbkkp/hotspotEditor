@@ -121,6 +121,11 @@ export default {
           type:'md-cube',
           bgcolor:'#5CCEC7',
           multi:true
+        },
+        {
+          settype:'attributes',
+          type:'ios-leaf',
+          bgcolor:'#8BC34A'
         }
       ]
     }
