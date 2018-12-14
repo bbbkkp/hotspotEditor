@@ -97,7 +97,7 @@ export default {
                 
             });
 
-            clipboard.writeText(str);
+            clipboard.writeText(this.trim(str));
             this.$Message.success(`已复制 ${str} 属性`);
         },
         //取消设置，恢复初始值

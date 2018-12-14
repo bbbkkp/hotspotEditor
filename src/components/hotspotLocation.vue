@@ -31,7 +31,7 @@ export default {
             };
 
             let str = `ath="${location.ath}" atv="${location.atv}"`;
-            clipboard.writeText(str);
+            clipboard.writeText(this.trim(str));
             this.$Message.success(`已复制 ${str} 属性`);
 
             setTimeout(() => {

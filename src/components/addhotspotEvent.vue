@@ -39,7 +39,7 @@
 						str = str.split('/>')[0] + this.$store.state.spotevent;
 					}
 					if(str.indexOf('/>') < 0) str = str + "/>";
-					clipboard.writeText(str);
+					clipboard.writeText(this.trim(str));
 					this.$Message.success('热点属性已复制');
 
 					this.cancelEvent();

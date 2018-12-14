@@ -3,7 +3,7 @@
         <div class="input-container">
             <div class="item-block" v-for="(item,index) in attributelist" :key="index">
                 <Input class="input-item" v-model="item.key" placeholder="名称" />=
-                <Input class="input-item" v-model="item.value" placeholder="值" />
+                <Input class="input-item" v-model="item.value" placeholder="值" @on-blur="setAttributes(item)" />
                 <Button class="btn-item" shape="circle" :data-index="index" icon="md-remove" @click="removeItem($event)"></Button>
                 <Button class="btn-item" shape="circle" icon="md-add" @click="addItem"></Button>
             </div>
@@ -50,7 +50,7 @@ export default {
         },
         okEvent(){
             let attributes = this.attributelist.filter(element=>element.key !=='' && element.value !== '');
-            this.setAttributes(attributes);
+            //this.setAttributes(attributes);
 
              let settype = this.$store.state.settype;
              if(settype == 'attributes'){
@@ -58,7 +58,7 @@ export default {
              }
              else{
                  this.addokEvent(attributes);
-             };
+             }
 
               setTimeout(() => {
                     this.cancelEvent();
@@ -88,20 +88,28 @@ export default {
             if(attributes.length){
                 let _attrs = '';
                 attributes.map(element=>{
-                    _attrs+= `${element.key}="${element.value}"`
+                    _attrs+= `${element.key}="${element.value}" `
                 });
-                clipboard.writeText(_attrs);
+                
+                clipboard.writeText(this.trim(_attrs));
                 this.$Message.success(`已复制 ${_attrs} 属性`);
             }
         },
-        setAttributes(attributes){
+        //设置热点属性，实时渲染
+        // setAttributes(attributes){
+        //     let hotspot = this.$store.state.hotspot,
+        //         krpano = this.$store.state.krpano;
+        //     attributes.map(element=>{
+        //         let attr = `hotspot[${hotspot.name}].${element.key}`;
+        //         krpano.set(attr,element.value);
+        //     });
+            
+        // },
+        setAttributes(item){
             let hotspot = this.$store.state.hotspot,
                 krpano = this.$store.state.krpano;
-            attributes.map(element=>{
-                let attr = `hotspot[${hotspot.name}].${element.key}`;
-                krpano.set(attr,element.value);
-            });
-            
+            let attr = `hotspot[${hotspot.name}].${item.key}`;
+            krpano.set(attr,item.value);
         }
     }
 }

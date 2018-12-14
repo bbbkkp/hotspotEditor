@@ -2,7 +2,7 @@
     <div class="view-change-btns" :class="{mobilestyle:$store.state.status.ismobile}">
         <div>
             <Button icon="md-checkmark" type="success" @click="okEvent" >确定</Button>
-            <Button icon="md-close" type="warning"@click="cancelEvent" >取消</Button>
+            <Button icon="md-close" type="warning" @click="cancelEvent" >取消</Button>
         </div>
     </div>
 </template>
@@ -30,7 +30,8 @@ export default {
             for(let key in view){
                 str += `${key}="${view[key]}" `;
             };
-            clipboard.writeText(str);
+
+            clipboard.writeText(this.trim(str));
             this.$Message.success('视角属性已复制');
 
             this.cancelEvent();
